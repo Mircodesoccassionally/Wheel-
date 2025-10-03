@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <!-- Ensures proper rendering on all devices -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <title>Lucky Draw — Spin Wheel</title>
+  
+  <!-- External stylesheet for styling the page -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <!-- Main heading -->
+    <h1> Lucky Draw — Spin Wheel</h1>
+    
+    <!-- Instruction text -->
+    <div class="small">Click SPIN or add names seperated by commas to update the list</div>
+
+    <!-- Wheel container -->
+    <div class="wheel-outer">
+      <!-- Static pointer (the "needle" for the wheel) -->
+      <div class="pointer" aria-hidden="true"></div>
+      
+      <!-- Canvas element where the spinning wheel will be drawn -->
+      <canvas id="wheel" width="500" height="500" role="img" aria-label="Prize wheel"></canvas>
+      
+      <!-- Center circle with spin button -->
+      <div class="center" aria-hidden="true">
+        <button id="spinBtn">SPIN</button>
+      </div>
+    </div>
+
+    <!-- Controls for updating the list of names -->
+    <div class="controls">
+      <!-- Input field where users type names separated by commas -->
+      <input 
+        id="namesInput" 
+        type="text" 
+        placeholder="Alice, Bob, Charlie, Diana, Eve, Frank, Grace, Heidi" 
+      />
+      <!-- Button to update the wheel with the new names -->
+      <button id="updateBtn" class="secondary">Update Names</button>
+    </div>
+
+    <!-- Area to display the winner after the wheel stops -->
+    <div class="result" id="resultText">Winner: —</div>
+  </div>
+
+  <!-- External JavaScript file to handle wheel drawing and spin logic -->
+  <script src="script.js"></script>
+</body>
+</html>

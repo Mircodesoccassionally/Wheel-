@@ -1,0 +1,166 @@
+/* =========================
+   Global variables & defaults
+   ========================= */
+:root {
+  --size: 360px;         /* Overall max size of wrapper */
+  --canvas-size: 340px;  /* Size of the spinning wheel */
+  --deep-navy: #122049;  /* Background and accent color */
+  --gold: #EFB83A;       /* Primary highlight color */
+  --cyan: #33D7FF;       /* Secondary accent color */
+  
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+}
+
+/* Reset browser defaults for full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Center the content in the middle of the screen */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--deep-navy);
+  color: var(--gold);
+}
+
+/* Main wrapper with responsive width */
+.wrap {
+  width: min(92vw, var(--size));
+  text-align: center;
+}
+
+/* Title styling */
+h1 {
+  font-size: 1.25rem;
+  margin: 0 0 10px;
+  color: var(--gold);
+}
+
+/* =========================
+   Wheel + pointer
+   ========================= */
+.wheel-outer {
+  position: relative;
+  margin: 14px auto;
+  width: var(--canvas-size);
+  height: var(--canvas-size);
+}
+
+/* Wheel canvas styling */
+#wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Makes it circular */
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.5),   /* Outer shadow */
+    inset 0 -6px 18px rgba(0, 0, 0, 0.3); /* Inner shading */
+  border: 6px solid #ffffff; /* White outer border */
+}
+
+/* Pointer (triangle indicator above wheel) */
+.pointer {
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: rotate(180deg); /* Point it downward */
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 28px solid white; /* White triangle */
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.4)); /* Adds shadow depth */
+}
+
+/* =========================
+   Center button
+   ========================= */
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* Perfectly centered */
+  width: 88px;
+  height: 88px;
+  border-radius: 50%; /* Circle shape */
+  background: var(--deep-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5); /* 3D pop */
+}
+
+/* Spin button styling */
+.center button {
+  background: var(--gold);
+  border: none;
+  color: var(--deep-navy);
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Disabled button look */
+.center button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================
+   Controls (name input + update button)
+   ========================= */
+.controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+/* Input field */
+input[type="text"] {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--gold);
+  min-width: 240px;
+  background: var(--deep-navy);
+  color: var(--cyan);
+}
+
+/* Update button */
+button.secondary {
+  background: var(--cyan);
+  border: 1px solid var(--gold);
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--deep-navy);
+  font-weight: 600;
+}
+
+/* =========================
+   Result text & hints
+   ========================= */
+.result {
+  margin-top: 14px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--cyan);
+}
+
+/* Instruction text */
+.small {
+  font-size: 0.85rem;
+  color: var(--cyan);
+}
+
+/* =========================
+   Responsive adjustments
+   ========================= */
+@media (max-width: 560px) {
+  :root {
+    --canvas-size: 360px; /* Slightly larger wheel on small screens */
+  }
+}
